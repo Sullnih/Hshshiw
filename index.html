@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Ulang Tahun</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #e1f5fe);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .countdown-box {
+      background: #ffffff;
+      padding: 30px 50px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      color: #00695c;
+      margin-top: 20px;
+    }
+
+    .countdown-time {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .label {
+      font-size: 16px;
+      color: #00796b;
+    }
+
+    .gif-box {
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+
+    .gif-box img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffb6b9;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a8e6cf;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎂 GIF -->
+  <div class="gif-box">
+    <img src="https://media.tenor.com/eRchQEilKdYAAAA1/%D8%A8%DB%8C%D8%AE%D9%88%D8%A7%D8%A8%DB%8C.webp" alt="GIF Countdown">
+  </div>
+
+  <!-- ⏳ Countdown -->
+  <div class="countdown-box" id="countdown">
+    <div class="countdown-time">Memuat...</div>
+    <div class="label">Hari : Jam : Menit : Detik</div>
+  </div>
+
+  <!-- 🔊 Audio Offline -->
+  <audio id="bgMusic" loop>
+    <source src="syyy.mp3" type="audio/mpeg">
+    Browser tidak mendukung audio.
+  </audio>
+
+  <!-- 🎵 Tombol Play/Pause Musik -->
+  <button id="musicBtn" onclick="toggleMusic()"> Play Musik</button>
+
+  <script>
+    const targetDate = new Date("2025-08-15T00:00:00").getTime();
+    const countdownTime = document.querySelector(".countdown-time");
+    const audio = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        window.location.href = "selesai.html";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownTime.innerHTML = `${days} : ${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function toggleMusic() {
+      if (audio.paused) {
+        audio.play();
+        musicBtn.textContent = " Pause ";
+      } else {
+        audio.pause();
+        musicBtn.textContent = "Play";
+      }
+    }
+  </script>
+
+</body>
+</html>
