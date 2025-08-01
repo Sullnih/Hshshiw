@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zall tsaa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Musik Latar -->
+  <audio id="bg-music" src="TikSave.io_7359321105150004513.mp3" preload="auto" loop></audio>
+
+  <!-- Background Bintang -->
+  <div class="stars"></div>
+
+  <!-- Halaman Awal -->
+  <div class="awal">
+    <h1 id="judul">yuhuuu...</h1>
+    <button onclick="startQuiz()">Klik di sini</button>
+  </div>
+
+  <!-- Bagian Kuis -->
+  <div class="quiz-container hidden" id="quiz">
+    <div class="question-card">
+      <h2 id="question-text">Siapa yang ultah hari ini?</h2>
+      <div class="options">
+        <!-- Pilihan akan muncul dari script -->
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kejutan Ulang Tahun -->
+  <div class="surprise hidden" id="surprise">
+    <div class="balloons" style="top: 10%; left: 10%;">🎈</div>
+    <div class="balloons" style="top: 15%; right: 15%; animation-delay: 0.5s;">🎈</div>
+    <div class="balloons" style="top: 20%; left: 20%; animation-delay: 1s;">🎈</div>
+
+    <div class="music-note" style="top: 25%; left: 30%; animation-delay: 0.3s;">🎵</div>
+    <div class="music-note" style="top: 35%; right: 25%; animation-delay: 0.8s;">🎶</div>
+    <div class="music-note" style="bottom: 30%; left: 15%; animation-delay: 1.2s;">🎵</div>
+
+    <h1 class="animate">🎉 Happy Birthday, 🎂 tsaa 🎂</h1>
+    <div class="cake" onclick="explodeCake()">🎂</div>
+    <p class="animate">    Di hari ulang tahun ini,
+semoga mimpi jadi nyata,
+tawa tak pernah sirna,
+dan  selalu dikelilingi orang yang sayang buat tsa nya. aminn.</p>
+    <button class="party-button" onclick="moreParty()">Lebih Meriah! 🎊</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
